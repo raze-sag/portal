@@ -7,7 +7,7 @@ import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
 
-import gaiaLogo from '../../assets/images/PLC-AAD-Logo.png';
+import logo from '../../assets/images/euprogigant-logo.png';
 
 import styles from './Navbar.module.css';
 
@@ -27,9 +27,10 @@ export default function Navbar() {
         <div className={styles.logo}>
           <Link to="/">
             <img
-              src={gaiaLogo}
+              src={logo}
               alt="Gaia-X Logo"
-              style={{ width: '300px', height: '50px' }}
+              //style={{ width: '300px', height: '50px' }}
+              style={{ width: '200px', height: '92px' }}
             />
           </Link>
         </div>

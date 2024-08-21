@@ -14,7 +14,7 @@ export const Footer = () => {
         <p>Powered by</p>
         <MyIcon />
       </div>
-      <p className={styles.copyright}>Gaia-X © 2024</p>
+      <p className={styles.copyright}>Software AG & Gaia-X © 2024</p>
       <ul className={styles['navigation-items']}>
         {footerAssets.map((footerAsset, index) => {
           return (
