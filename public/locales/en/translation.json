@@ -503,8 +503,9 @@
     "is-gaia-x-compliant": "Gaia-X compliant",
     "not-gaia-x-compliant": "Not Gaia-X compliant",
     "no-offerings-available": "No offerings available",
+    "no-resources-available": "No resources available",
     "not-authenticated": "Not authenticated",
-    "searchBarText": "Search for special Resources or Service Offerings"
+    "searchBarText": "Search for Resources"
   },
   "ontologies": {
     "title": "Ontology",
