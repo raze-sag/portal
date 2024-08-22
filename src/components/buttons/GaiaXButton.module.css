@@ -3,7 +3,7 @@
     background-color: #A01441;
     border-radius: 10px;
     border: none;
-    font-size: 25px;
+    font-size: 16px;
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s;
@@ -13,7 +13,8 @@
 }
 
 .button:hover {
-    transition: all 0.4s ease 0s;
+    /* transition: all 0.4s ease 0s;
+    transform: scale(1.2); */
     cursor: pointer;
-    transform: scale(1.2);
+    background-color: #c02153;
 }
