@@ -12,7 +12,10 @@ export const useResourceFilter = () => {
   const { typeAssets, formatAssets, vendorAssets } = resourceFilters;
 
   const fetchFilteredData = async () => {
-    const endpoint = 'https://fc-server.gxfs.gx4fm.org/query';
+    if (!process.env.REACT_APP_QUERY_ENDPOINT) {
+      throw new Error('REACT_APP_QUERY_ENDPOINT is not defined');
+    }
+    const endpoint = process.env.REACT_APP_QUERY_ENDPOINT;
     const headers = {
       Authorization: `Bearer ${token}`,
       'Access-Control-Allow-Origin': '*',

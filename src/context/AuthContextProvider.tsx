@@ -4,7 +4,7 @@ import React, { createContext, useEffect, useState, useMemo } from 'react';
 const keycloakConfig: KeycloakConfig = {
   realm: 'gaia-x',
   clientId: 'portal',
-  url: 'https://fc-keycloak.gxfs.gx4fm.org/',
+  url: process.env.REACT_APP_KEYCLOAK_API_URL,
 };
 
 const keycloak = new Keycloak(keycloakConfig);

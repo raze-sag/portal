@@ -10,7 +10,10 @@ const getHeaders = (authContext: AuthContextValues) => {
   };
 }
 
-const serverUrl: string = 'https://fc-server.gxfs.gx4fm.org';
+if (!process.env.REACT_APP_SERVER_ENDPOINT) {
+  throw new Error('REACT_APP_SERVER_ENDPOINT is not defined');
+}
+const serverUrl: string = process.env.REACT_APP_SERVER_ENDPOINT;
 const queryEndpoint: string = serverUrl + '/query';
 
 const encodeString = (uri: string): string => {
