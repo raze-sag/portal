@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(to right, #060190, #A01441);
+    background-image: linear-gradient(to right, #060190, #a01441);
     padding: 10px;
     min-height: 7vh;
 }
@@ -32,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    width: 7%;
+    max-width: 100%;
 }
 
 .navigation-item {
@@ -49,7 +49,7 @@
 }
 
 .navigation-item:hover {
-    color: #A01441;
+    color: #a01441;
     transition: all 0.4s ease 0s;
     cursor: pointer;
     transform: scale(1.2);
