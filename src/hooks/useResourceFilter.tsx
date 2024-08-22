@@ -12,10 +12,10 @@ export const useResourceFilter = () => {
   const { typeAssets, formatAssets, vendorAssets } = resourceFilters;
 
   const fetchFilteredData = async () => {
-    if (!process.env.REACT_APP_QUERY_ENDPOINT) {
-      throw new Error('REACT_APP_QUERY_ENDPOINT is not defined');
+    if (!process.env.REACT_APP_SERVER_ENDPOINT) {
+      throw new Error('REACT_APP_SERVER_ENDPOINT is not defined');
     }
-    const endpoint = process.env.REACT_APP_QUERY_ENDPOINT;
+    const endpoint = process.env.REACT_APP_SERVER_ENDPOINT + '/query';
     const headers = {
       Authorization: `Bearer ${token}`,
       'Access-Control-Allow-Origin': '*',
@@ -48,7 +48,7 @@ export const useResourceFilter = () => {
       query = `MATCH (n)${whereClause} RETURN properties(n), labels(n)`;
     } else {
       query =
-        'MATCH (n) WHERE (n:HDMap OR n:EnvironmentModel OR n:Scenario) RETURN properties(n), labels(n)';
+        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) RETURN properties(n), labels(n)';
     }
 
     const requestBody = { statement: query };

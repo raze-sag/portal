@@ -13,15 +13,15 @@ export const resourceFilters: Filter = {
   typeAssets: [
     {
       checkboxName: 'hdMap',
-      label: 'HD Map',
+      label: 'LegalParticipant',
     },
     {
       checkboxName: 'scenario',
-      label: 'Scenario',
+      label: 'ServiceOffering',
     },
     {
       checkboxName: 'environmentModel',
-      label: 'Environment Model',
+      label: 'DataResource',
     },
   ],
   formatAssets: [

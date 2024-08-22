@@ -128,7 +128,7 @@ export const ApiService = {
     const endpoint = queryEndpoint;
     const headers = getHeaders(authContext);
     const requestBody = {
-      statement: 'MATCH (n) WHERE (n:HDMap OR n:EnvironmentModel OR n:Scenario) RETURN properties(n), labels(n)',
+      statement: 'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) RETURN properties(n), labels(n)',
     };
 
     // Perform POST request
