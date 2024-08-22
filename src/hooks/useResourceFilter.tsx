@@ -45,10 +45,21 @@ export const useResourceFilter = () => {
         ...vendorConditions,
       ].join(' OR ');
       const whereClause = conditions.length > 0 ? ` WHERE ${conditions}` : '';
-      query = `MATCH (n)${whereClause} RETURN properties(n), labels(n)`;
+      const includesLegalParticipant =
+        conditions.includes('n:LegalParticipant');
+
+      if (includesLegalParticipant) {
+        query = `
+      MATCH (n)${whereClause}
+      OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m)
+      RETURN properties(n), labels(n), m AS relatedNode, r.legalRegistrationNumber AS legalRegistrationNumber
+    `;
+      } else {
+        query = `MATCH (n)${whereClause} RETURN properties(n), labels(n)`;
+      }
     } else {
       query =
-        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) RETURN properties(n), labels(n)';
+        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m) RETURN properties(n), labels(n), m AS relatedNode, r AS relationship';
     }
 
     const requestBody = { statement: query };

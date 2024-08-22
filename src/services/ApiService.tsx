@@ -128,7 +128,8 @@ export const ApiService = {
     const endpoint = queryEndpoint;
     const headers = getHeaders(authContext);
     const requestBody = {
-      statement: 'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) RETURN properties(n), labels(n)',
+      statement:
+        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m) RETURN properties(n), labels(n), m AS relatedNode, r AS relationship',
     };
 
     // Perform POST request

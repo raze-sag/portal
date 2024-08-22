@@ -32,7 +32,7 @@ const Resources = () => {
       setIsLoading(true);
       try {
         const response = await ApiService.getAllResources(authContext);
-        console.log('My fetched data: ', response);
+        console.debug('My fetched data: ', response);
         const map = mapResources(response);
         setResourceData(map);
         setFilteredResourceData(map);
@@ -66,7 +66,7 @@ const Resources = () => {
       setFilteredResourceData(resourceData);
     } else {
       const lowerCaseQuery = query.toLowerCase();
-      const filtered = resourceData.filter(resource => {
+      const filtered = resourceData.filter((resource) => {
         const resourceString = JSON.stringify(resource).toLowerCase();
         return resourceString.includes(lowerCaseQuery);
       });
@@ -78,7 +78,10 @@ const Resources = () => {
     <div>
       <header className={styles['header-container']}>
         <div className={styles['header-title']}>
-          <Title>{t('left-menu.resources')}({filteredResourceData.length} {t('dashboard.results')})</Title>
+          <Title>
+            {t('left-menu.resources')} ({filteredResourceData.length}{' '}
+            {t('dashboard.results')})
+          </Title>
         </div>
       </header>
       <div className={styles['resource-content-container']}>
@@ -91,29 +94,30 @@ const Resources = () => {
         {authContext.isAuthenticated && (
           <div className={styles.content}>
             <div>
-              <SearchBar placeholder={t('resources.searchBarText')} onSearch={handleSearch}/>
+              <SearchBar
+                placeholder={t('resources.searchBarText')}
+                onSearch={handleSearch}
+              />
             </div>
             <div>
               {isLoading && (
                 <div className="newCarLoader">
-                  <img src={car} alt="loading..." className="car"/>
+                  <img src={car} alt="loading..." className="car" />
                 </div>
               )}
               {!isLoading && filteredResourceData.length > 0 ? (
-                filteredResourceData.map((resource) => {
+                filteredResourceData.map((resource, index) => {
                   return (
                     <SelfDescriptionCard
-                      key={resource.name}
-                      label={resource.label}
-                      isGaiaXComlpiant={true}
-                      name={resource.name}
-                      description={resource.description}
+                      key={index}
+                      isGaiaXCompliant={true}
                       selfDescription={resource}
+                      data={resource.data}
                     />
                   );
                 })
               ) : (
-                <Text>{t('resources.no-offerings-available')}</Text>
+                <Text>{t('resources.no-resources-available')}</Text>
               )}
             </div>
           </div>
