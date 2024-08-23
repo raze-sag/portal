@@ -3,10 +3,18 @@ import { useTranslation } from 'react-i18next';
 
 import car from '../../assets/car.gif';
 import { AuthContext } from '../../context/AuthContextProvider';
-import { createAllOntologyObjects, fetchOntologies, Ontology, parseOntologies } from '../../utils/ontologyMapper';
+import {
+  createAllOntologyObjects,
+  fetchOntologies,
+  Ontology,
+  parseOntologies,
+} from '../../utils/ontologyMapper';
 import Text from '../Text/Text';
 import Title from '../Title/Title';
-import SelfDescriptionCard from '../cards/SelfDescriptionCard';
+import SelfDescriptionCard, {
+  OntologyCardData,
+  RessourceType,
+} from '../cards/SelfDescriptionCard';
 import SearchBar from '../searchBar/SearchBar';
 
 import styles from './ShapesAndOntologies.module.css';
@@ -44,7 +52,7 @@ const ShapesAndOntologies = () => {
       setFilteredOntologies(originalOntologies);
     } else {
       const lowerCaseQuery = query.toLowerCase();
-      const filtered = originalOntologies.filter(ontology => {
+      const filtered = originalOntologies.filter((ontology) => {
         const ontologyString = JSON.stringify(ontology).toLowerCase();
         return ontologyString.includes(lowerCaseQuery);
       });
@@ -56,32 +64,41 @@ const ShapesAndOntologies = () => {
     <div>
       <header className={styles['header-container']}>
         <div className={styles['header-title']}>
-          <Title>{t('left-menu.shapesAndOntologies')}({filteredOntologies.length} {t('dashboard.results')})</Title>
+          <Title>
+            {t('left-menu.shapesAndOntologies')} ({filteredOntologies.length}{' '}
+            {t('dashboard.results')})
+          </Title>
         </div>
       </header>
       <div className={styles['shapesAndOntologies-content-container']}>
         {authContext.isAuthenticated && (
           <div className={styles.content}>
             <div>
-              <SearchBar placeholder={t('ontologies.searchBarText')} onSearch={handleSearch} />
+              <SearchBar
+                placeholder={t('ontologies.searchBarText')}
+                onSearch={handleSearch}
+              />
               {isLoading ? (
-                <div className="newCarLoader">
-                  <img src={car} alt="loading..." className="car"/>
+                <div className='newCarLoader'>
+                  <img src={car} alt='loading...' className='car' />
                 </div>
+              ) : filteredOntologies.length > 0 ? (
+                filteredOntologies.map((ontology, index) => (
+                  <SelfDescriptionCard
+                    key={index}
+                    data={
+                      {
+                        title: t('ontologies.title'),
+                        subject: ontology.title,
+                        description: ontology.description,
+                        type: RessourceType.Ontology,
+                      } as OntologyCardData
+                    }
+                    selfDescription={ontology}
+                  />
+                ))
               ) : (
-                filteredOntologies.length > 0 ? (
-                  filteredOntologies.map((ontology, index) => (
-                    <SelfDescriptionCard
-                      key={index}
-                      label={t('ontologies.title')}
-                      name={ontology.subject}
-                      description={ontology.description}
-                      selfDescription={ontology}
-                    />
-                  ))
-                ) : (
-                  <Text>{t('ontologies.noOntologiesAvailable')}</Text>
-                )
+                <Text>{t('ontologies.noOntologiesAvailable')}</Text>
               )}
             </div>
           </div>
