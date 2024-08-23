@@ -48,18 +48,16 @@ export const useResourceFilter = () => {
       const includesLegalParticipant =
         conditions.includes('n:LegalParticipant');
 
-      if (includesLegalParticipant) {
-        query = `
-      MATCH (n)${whereClause}
-      OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m)
-      RETURN properties(n), labels(n), m AS relatedNode, r.legalRegistrationNumber AS legalRegistrationNumber
-    `;
+      const includesServiceOffering = conditions.includes('n:ServiceOffering');
+
+      if (includesLegalParticipant || includesServiceOffering) {
+        query = `MATCH (n)${whereClause} OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m) ${includesServiceOffering ? 'OPTIONAL MATCH (n:ServiceOffering)-[providedBy]->(lp:LegalParticipant)': '' } RETURN properties(n), labels(n), m AS relatedNode, r.legalRegistrationNumber AS legalRegistrationNumber ${includesServiceOffering ? ', lp AS providedByLegalParticipant' : ''}`;
       } else {
         query = `MATCH (n)${whereClause} RETURN properties(n), labels(n)`;
       }
     } else {
       query =
-        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m) RETURN properties(n), labels(n), m AS relatedNode, r AS relationship';
+        'MATCH (n) WHERE (n:LegalParticipant OR n:ServiceOffering OR n:DataResource) OPTIONAL MATCH (n)-[r:legalRegistrationNumber]->(m) OPTIONAL MATCH (n:ServiceOffering)-[providedBy]->(lp:LegalParticipant) RETURN properties(n), labels(n), m AS relatedNode, r AS relationship, lp AS providedByLegalParticipant';
     }
 
     const requestBody = { statement: query };
