@@ -168,7 +168,6 @@ export default function SelfDescriptionCard({
         </>
       );
     } else if (isServiceOffering) {
-      console.log(data)
       return (
         <>
           <p className={styles.heading}>{data.name ? data.name : 'No name available!'}</p>
