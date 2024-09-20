@@ -24,6 +24,7 @@ export interface LegalParticipantCardData {
   countryCode: string;
   subdivisionCountrCode: string;
   leiCode: string;
+  vatId: string;
   type: RessourceType.LegalParticipant;
 }
 
@@ -164,15 +165,19 @@ export default function SelfDescriptionCard({
           <p className={styles.heading}>
             {data.legalName} ({data.subdivisionCountrCode})
           </p>
-          <p className={styles.subheading}>{data.leiCode}</p>
+          <p className={styles.subheading}>
+            {data.leiCode ? data.leiCode : data.vatId}
+          </p>
         </>
       );
     } else if (isServiceOffering) {
       return (
         <>
-          <p className={styles.heading}>{data.name ? data.name : 'No name available!'}</p>
+          <p className={styles.heading}>
+            {data.name ? data.name : 'No name available!'}
+          </p>
           <p className={styles.subheading}>
-            <IoMdPerson size={16}  className={styles.labelIcon} />
+            <IoMdPerson size={16} className={styles.labelIcon} />
             {data.providedBy}
           </p>
         </>
