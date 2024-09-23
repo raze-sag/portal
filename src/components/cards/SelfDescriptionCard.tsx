@@ -22,7 +22,7 @@ export interface ServiceOfferingCardData {
 export interface LegalParticipantCardData {
   legalName: string;
   countryCode: string;
-  subdivisionCountrCode: string;
+  subdivisionCountryCode: string;
   leiCode: string;
   vatId: string;
   type: RessourceType.LegalParticipant;
@@ -163,7 +163,11 @@ export default function SelfDescriptionCard({
       return (
         <>
           <p className={styles.heading}>
-            {data.legalName} ({data.subdivisionCountrCode})
+            {data.legalName} (
+            {data.subdivisionCountryCode
+              ? data.subdivisionCountryCode
+              : data.countryCode}
+            )
           </p>
           <p className={styles.subheading}>
             {data.leiCode ? data.leiCode : data.vatId}

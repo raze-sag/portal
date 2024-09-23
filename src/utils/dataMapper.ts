@@ -134,9 +134,11 @@ function mapServiceOfferingData(p: any, m: any): ServiceOfferingCardData {
 function mapLegalParticipantData(p: any, r: any): LegalParticipantCardData {
   const data: LegalParticipantCardData = {
     legalName: p.legalName,
-    countryCode: r['leiCode-countryCode'] ,
-    subdivisionCountrCode: r['leiCode-subdivisionCountryCode'],
-    leiCode: r.leiCode ,
+    countryCode: r['leiCode-countryCode']
+      ? r['leiCode-countryCode']
+      : r['vatID-countryCode'],
+    subdivisionCountryCode: r['leiCode-subdivisionCountryCode'],
+    leiCode: r.leiCode,
     vatId: r.vatID,
     type: RessourceType.LegalParticipant,
   };
