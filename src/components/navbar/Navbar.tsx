@@ -1,9 +1,9 @@
 import GaiaXButton from 'components/buttons/GaiaXButton';
-import LanguageModal from 'components/modals/LanguageModal';
+import LanguageSelector from 'components/languageSelector/LanguageSelector';
 import { AuthContext } from 'context/AuthContextProvider';
 import { useNavbar } from 'hooks/useNavbar';
 import i18n from 'i18n';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -15,7 +15,6 @@ export default function Navbar() {
   const { t } = useTranslation();
   const navbarAssets = useNavbar();
   const authContext = useContext(AuthContext);
-  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
 
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
@@ -49,14 +48,6 @@ export default function Navbar() {
                 </NavLink>
               </li>
             ))}
-
-            {/* Language Modal Activation Link */}
-            <li
-              className={styles['navigation-item']}
-              onClick={() => setIsLanguageModalOpen(true)}
-            >
-              {t('left-menu.choose-language')}
-            </li>
           </ul>
         )}
         {!authContext.isAuthenticated ? (
@@ -70,11 +61,8 @@ export default function Navbar() {
             handleOnClick={authContext.logout}
           />
         )}
-
-        {/* Language Modal Component */}
-        <LanguageModal
-          isOpen={isLanguageModalOpen}
-          onClose={() => setIsLanguageModalOpen(false)}
+        <LanguageSelector
+          currentLanguage={i18n.language}
           changeLanguage={changeLanguage}
         />
       </div>
