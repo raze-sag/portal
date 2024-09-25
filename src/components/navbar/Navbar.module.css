@@ -29,23 +29,24 @@
     min-width: fit-content;
     font-weight: 600;
     padding: 10px;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #23406c;
 }
 
 .navigation-item a {
     text-decoration: none;
-    color: black;
 }
 
 .navigation-item:hover {
-    color: #A01441;
+    color: #387db0;
     transition: all 0.4s ease 0s;
     cursor: pointer;
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 .navigation-item:hover, .navigation-item.active {
-    color: #A01441;
+    color: #387db0;
   }
 
 .logo {

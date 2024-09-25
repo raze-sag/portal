@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    font: 700 14px/1.33 "Titillium Web", Helvetica, Arial, serif;
+    font: 700 14px/1.33 "Asap", Helvetica, Arial, serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -16,7 +16,7 @@
 }
 
 body {
-    font: 700 14px/1.33 "Titillium Web", Helvetica, Arial, serif;
+    font: 700 14px/1.33 "Asap", Helvetica, Arial, serif;
     margin: 0px;
     padding: 0;
     background-color: #EFEFEF;

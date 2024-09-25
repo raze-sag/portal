@@ -5,11 +5,11 @@ export const useFooter = () => {
 
   return [
     {
-      path: 'https://www.msg.group/en/privacy',
+      path: 'https://www.softwareag.com/en_corporate/privacy.html',
       navigationItemName: t('links.privacy'),
     },
     {
-      path: 'https://www.msg.group/en/imprint',
+      path: 'https://www.softwareag.com/en_corporate/impressum.html',
       navigationItemName: t('links.imprint'),
     },
   ];

@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(to right, #060190, #A01441);
+    background-color: #23406c;
     padding: 10px;
     min-height: 7vh;
 }
