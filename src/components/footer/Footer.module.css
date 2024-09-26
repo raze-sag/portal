@@ -6,6 +6,7 @@
     background-color: #23406c;
     padding: 10px;
     min-height: 7vh;
+    max-width: 100%;
 }
 
 .footer-container p {
@@ -32,7 +33,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    width: 7%;
 }
 
 .navigation-item {
@@ -52,5 +52,26 @@
     color: #A01441;
     transition: all 0.4s ease 0s;
     cursor: pointer;
-    transform: scale(1.2);
+}
+
+@media (max-width: 670px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center !important;
+        align-items: flex-start;
+    }
+
+    .logo {
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navigation-items {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navigation-item {
+        padding: 5px 0;
+    }
 }

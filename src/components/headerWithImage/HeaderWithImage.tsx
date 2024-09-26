@@ -14,7 +14,7 @@ const  HeaderWithImage: FC<IHeaderWithImage> = ({ title, content, Image }: Reado
   return (
     <div className={styles['header-container']}>
       <div className={styles['header-image']}>
-        <Image />
+        <Image className={styles['svg-image']} />
       </div>
       <div className={styles['header-content']}>
         <Title>{title}</Title>

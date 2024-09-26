@@ -2,14 +2,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
     min-height: 30vh;
     background-image: linear-gradient(to right, #387db0, #2b517d);
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .header-image {
     flex: 1;
     padding: 30px;
+}
+
+.svg-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 .header-content {
@@ -19,4 +26,25 @@
     flex: 1;
     color: white;
     padding-right: 20%;
+}
+
+@media (max-width: 920px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header-image {
+        padding: 20px;
+    }
+
+    .svg-image {
+        width: 100%;
+        height: auto;
+    }
 }
