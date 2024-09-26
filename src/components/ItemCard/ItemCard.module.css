@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #000094;
+    background-image: linear-gradient(to right, #387db0, #2b517d);
     padding: 10px;
     overflow: hidden;
 }
