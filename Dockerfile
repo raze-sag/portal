@@ -5,7 +5,7 @@ WORKDIR $ARG_APP_HOME
 COPY package*.json ./
 RUN npm i
 COPY . . 
-RUN npm run build
+RUN npm run build:prod
 
 FROM node:18-alpine3.20
 ARG ARG_APP_HOME=/home/node/app
