@@ -16,10 +16,7 @@ build_portal:
     - apk add --update nodejs npm git
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - git checkout -b $CI_COMMIT_REF_NAME
     - docker pull $CI_REGISTRY/euprogigant/portal:latest
     - docker build --cache-from $CI_REGISTRY/euprogigant/portal:latest -t $CI_REGISTRY/euprogigant/portal:latest .
-    - docker tag $CI_REGISTRY/euprogigant/portal:latest 
+    - docker build -t $CI_REGISTRY/euprogigant/portal:latest .
     - docker push $CI_REGISTRY/euprogigant/portal:latest
-  
-
