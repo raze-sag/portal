@@ -1,6 +1,6 @@
 stages:
   - build_portal
-  - trigger_deployment
+  - deploy_portal
 
 build_portal:
   image: docker:24.0.9
@@ -20,3 +20,10 @@ build_portal:
     - docker build --cache-from $CI_REGISTRY/euprogigant/portal:latest -t $CI_REGISTRY/euprogigant/portal:latest .
     - docker build -t $CI_REGISTRY/euprogigant/portal:latest .
     - docker push $CI_REGISTRY/euprogigant/portal:latest
+
+deploy_portal:
+  stage: deploy_portal
+  script:
+    - echo Deploying Portal
+  environment:
+    name: Portal
