@@ -20,6 +20,8 @@ build_portal:
     - docker build --cache-from $CI_REGISTRY/euprogigant/portal:latest -t $CI_REGISTRY/euprogigant/portal:latest .
     - docker build -t $CI_REGISTRY/euprogigant/portal:latest .
     - docker push $CI_REGISTRY/euprogigant/portal:latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "euprogigant-portal"'
 
 deploy_portal:
   stage: deploy_portal
@@ -27,3 +29,5 @@ deploy_portal:
     - echo Deploying Portal
   environment:
     name: Portal
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "euprogigant-portal"'
