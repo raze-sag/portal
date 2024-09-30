@@ -7,7 +7,7 @@ class AboutPage extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: '3em' }}>
         <h1>About the project EuProGigant</h1>
         EuProGigant stands for “European Production Giganet for calamity
         avoiding self-orchestration of value chain and learning ecosystems“, the
