@@ -515,6 +515,14 @@
     "no-description": "No description available!",
     "no-title": "No title available"
   },
+  "participants": {
+    "title": "Participant",
+    "titles": "Participants",
+    "search-bar-text": "Search for special service participants",
+    "no-offerings-available": "No participants available",
+    "no-description": "No description available!",
+    "no-title": "No title available"
+  },
   "resources": {
     "search-bar-text": "Search for special resources",
     "no-resources-available": "No resources available"
