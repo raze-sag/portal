@@ -16,13 +16,13 @@
 }
 
 .label {
-    min-width: 30%;
+    min-width: 15%;
     height: inherit;
     border-radius: 10px 0 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-image: linear-gradient(to right, #387db0, #2b517d);
     padding: 10px;
     overflow: hidden;
@@ -30,6 +30,8 @@
 
 .label h2 {
     color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .label p {
@@ -37,6 +39,7 @@
     font-size: 15px;
     font-weight: 300;
     align-items: center;
+    display: flex;
     justify-content: center;
 }
 
