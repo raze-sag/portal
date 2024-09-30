@@ -513,6 +513,14 @@
     "no-description": "Keine Beschreibung verfügbar!",
     "no-title": "Kein Titel verfügbar!"
   },
+  "participants": {
+    "title": "Teilnehmer",
+    "titles": "Teilnehmer",
+    "search-bar-text": "Nach speziellen Teilnehmern suchen",
+    "no-offerings-available": "Keine Teilnehmer verfügbar",
+    "no-description": "Keine Beschreibung verfügbar!",
+    "no-title": "Kein Titel verfügbar!"
+  },
   "resources": {
     "search-bar-text": "Nach speziellen Ressourcen suchen",
     "no-resources-available": "Keine Ressourcen verfügbar!"

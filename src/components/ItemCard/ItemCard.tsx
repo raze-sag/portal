@@ -1,5 +1,6 @@
 import HubIcon from '@mui/icons-material/Hub';
 import InterestsIcon from '@mui/icons-material/Interests';
+import PersonIcon from '@mui/icons-material/Person';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -7,6 +8,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Ontology } from 'types/ontologies.model';
+import { Participant } from 'types/participants.model';
 import { Resource } from 'types/resources.model';
 import { ServiceOffering } from 'types/serviceOfferings.model';
 import { Shape } from 'types/shapes.model';
@@ -27,6 +29,7 @@ interface IItemCard {
   shape?: Shape;
   service?: ServiceOffering;
   resource?: Resource;
+  participant?: Participant;
 }
 
 const ItemCard: FC<IItemCard> = ({
@@ -36,11 +39,18 @@ const ItemCard: FC<IItemCard> = ({
   shape,
   service,
   resource,
+  participant,
 }) => {
   const { t } = useTranslation();
 
   const getIcon = () => {
-    if (service) {
+    if (participant) {
+      return (
+        <>
+          <PersonIcon style={{ fontSize: 66, color: 'white' }} />
+        </>
+      );
+    } else if (service) {
       return (
         <>
           <SettingsSuggestIcon style={{ fontSize: 66, color: 'white' }} />
@@ -81,6 +91,8 @@ const ItemCard: FC<IItemCard> = ({
       <div className={styles.content}>
         {ontology ? (
           <OntologyCardContent ontology={ontology} />
+        ) : participant ? (
+          <ParticipantCardContent participant={participant} />
         ) : shape ? (
           <ShapeCardContent shape={shape} />
         ) : service ? (
