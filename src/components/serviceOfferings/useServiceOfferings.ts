@@ -12,7 +12,7 @@ export const useServiceOfferings = () => {
   const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
-    cypherQuery.getAllSelfDescriptions()
+    cypherQuery.getAllServiceOfferingSelfDescriptions()
       .then((selfDescriptions) => {
         setServiceOfferings(mapServiceOfferings(selfDescriptions));
       })
