@@ -27,8 +27,9 @@ export const useResources = () => {
       loadResources(typeAssets)
         .then((fetchedResources) => {
           setResources(fetchedResources);
-          setAvailableTypeAssetIds(removeDataResourceLabels(fetchedResources).map(resource => resource.labels).flat()
-          )
+          /* setAvailableTypeAssetIds(removeDataResourceLabels(fetchedResources).map(resource => resource.labels).flat()
+          ) */
+          console.log(fetchedResources)
         })
         .finally(() => setIsLoading(false));
     }
@@ -67,7 +68,7 @@ export const useResources = () => {
   };
 
   return {
-    resources: removeDataResourceLabels(filteredResources),
+    resources: filteredResources,
     state,
     typeAssets,
     formatAssets,
