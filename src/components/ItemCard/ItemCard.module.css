@@ -16,7 +16,7 @@
 }
 
 .label {
-    min-width: 15%;
+    min-width: 20%;
     height: inherit;
     border-radius: 10px 0 0 10px;
     display: flex;

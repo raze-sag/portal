@@ -25,7 +25,10 @@ const ParticipantCardContent: FC<IParticipantCardContent> = ({
   return (
     <div className={styles.content}>
       <div style={{ textAlign: 'left' }}>
-        <Title>{participant.legalName || t('participants.no-title')}</Title>
+        <Title>
+          {participant.legalName || t('participants.no-title')} (
+          {participant.countrySubdivisionCode || ''})
+        </Title>
       </div>
       <p>
         {participant.registrationNumber || t('participants.no-description')}

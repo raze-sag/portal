@@ -20,15 +20,18 @@ const ResourceCardContent: FC<IResourceCardContent> = ({ resource }) => {
     const encodedUri = encodeURIComponent(JSON.stringify(resource.claimsGraphUri));
     navigate(`/details/${encodedUri}`);
   };
-
   return (
     <section className={styles.content}>
-      <Title>{
-        resource.claimsGraphUri.map(claimsGraphUri => (
-          <div key={claimsGraphUri}>{claimsGraphUri}</div>
-        ))
-      }
+      <Title>
+        {resource.claimsGraphUri && Array.isArray(resource.claimsGraphUri) ? (
+          resource.claimsGraphUri.map((claimsGraphUri) => (
+            <div key={claimsGraphUri}>{claimsGraphUri}</div>
+          ))
+        ) : (
+          <div>No data available</div>
+        )}
       </Title>
+
       <p>{resource.description}</p>
       <div className={styles.button}>
         <GaiaXButton

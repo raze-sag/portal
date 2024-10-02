@@ -42,7 +42,18 @@ const ItemCard: FC<IItemCard> = ({
   participant,
 }) => {
   const { t } = useTranslation();
-
+  if (resource){
+    if (resource.labels.includes('ServiceOffering')){
+      service = resource;
+      resource = undefined
+      label = 'ServiceOffering'
+    }
+    else if (resource.labels.includes('LegalParticipant')) {
+      participant = resource;
+      resource = undefined;
+      label = 'LegalParticipant'
+    }
+  }
   const getIcon = () => {
     if (participant) {
       return (
