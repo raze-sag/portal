@@ -1,3 +1,5 @@
+import { Participant } from "./participants.model";
+
 export type ServiceOfferings = {
   survey_close_time?: string,
   survey_creation_time?: string,
@@ -11,10 +13,11 @@ export type ServiceOfferings = {
 }
 
 export interface ServiceOffering {
-  label: string,
-  name: string,
-  policy: string,
-  uri: string,
-  description: string,
-  claimsGraphUri: string,
+  label: string;
+  name: string;
+  policy: string;
+  uri: string;
+  description: string;
+  claimsGraphUri: string;
+  provider?: Participant;
 }
