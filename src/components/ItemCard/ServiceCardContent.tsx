@@ -25,8 +25,14 @@ const ServiceCardContent: FC<IServiceCardContent> = ({ service }) => {
       <div style={{ textAlign: 'left' }}>
         <Title>{service.name || t('service-offerings.no-title')}</Title>
       </div>
-      <p>{service.provider ? service.provider.legalName : t('service-offerings.no-description')}</p>
-
+      {service.provider ? (
+        <p>
+          {service.provider.legalName}{' '}
+          ({service.provider.countrySubdivisionCode})
+        </p>
+      ) : (
+        t('service-offerings.no-description')
+      )}
       {/* <div className={styles.button}>
         <GaiaXButton
           label={t('details.more-details')}
