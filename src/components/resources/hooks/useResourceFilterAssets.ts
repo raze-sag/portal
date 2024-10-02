@@ -52,23 +52,28 @@ export const useResourceFilterAssets = (): IUseFilterAssets => {
 
   return {
     isLoadingAssets: isLoading,
-    typeAssets,
+    typeAssets: [
+      //  Demo values for vendor assets. Should be replaced by dynamic loading of vendor information. At the moment this
+      //  information is not available in the ontologies and shacl shapes. It can not be retrieved from the backend.
+      createAsset('Participant', TYPE_ASSETS, true),
+      createAsset('Service Offering', TYPE_ASSETS, true),
+    ],
     formatAssets,
     vendorAssets: [
       //  Demo values for vendor assets. Should be replaced by dynamic loading of vendor information. At the moment this
       //  information is not available in the ontologies and shacl shapes. It can not be retrieved from the backend.
-      createAsset('3D Mapping', VENDOR_ASSETS, true),
-      createAsset('TrainGraphics', VENDOR_ASSETS, true),
-      createAsset('DLR', VENDOR_ASSETS, true),
+      createAsset('Software AG', VENDOR_ASSETS, true),
+      createAsset('TU Darmstadt', VENDOR_ASSETS, true),
+      createAsset('TU Wien', VENDOR_ASSETS, true),
     ],
     setAvailableTypeAssetIds,
     setAvailableFormatAssetIds,
-    updateAssetFilter: (asset: Asset) => updateAssetFilter(asset, {
-      setTypeAssets,
-      typeAssets,
-      setFormatAssets,
-      formatAssets
-    })
-    ,
-  }
+    updateAssetFilter: (asset: Asset) =>
+      updateAssetFilter(asset, {
+        setTypeAssets,
+        typeAssets,
+        setFormatAssets,
+        formatAssets,
+      }),
+  };
 };
