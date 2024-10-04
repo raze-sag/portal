@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import DetailsCard from 'components/cards/DetailsCard';
 import MapCard from 'components/cards/MapCard';
 import SidebarCard from 'components/cards/SidebarCard';
@@ -5,8 +6,6 @@ import { AuthContext } from 'context/AuthContextProvider';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CypherQueryApiService as cypherQuery } from 'services/cypherQueryApiService';
-
-import car from '../../assets/car.gif';
 
 import styles from './DetailsPage.module.css';
 
@@ -38,8 +37,8 @@ export default function DetailsPage() {
 
   if (isLoading) {
     return (
-      <div className="newCarLoader">
-        <img src={car} alt="loading..." className="car" />
+      <div className='newCarLoader'>
+        <CircularProgress />
       </div>
     );
   }
@@ -51,8 +50,8 @@ export default function DetailsPage() {
   return (
     <div className={styles['details-page-container']}>
       {isLoading ? (
-        <div className="newCarLoader">
-          <img src={car} alt="loading..." className="car" />
+        <div className='newCarLoader'>
+          <CircularProgress />
         </div>
       ) : (
         <>

@@ -1,10 +1,10 @@
+import { CircularProgress } from '@mui/material';
 import { ShapeContext } from 'context/ShapeContext';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 // @ts-ignore
-import car from '../../../../assets/car.gif';
 import { getShapeByName } from '../../../../services/shapeService.utils';
 import { Shape } from '../../../../types/shapes.model';
 import { ARROW_RIGHT } from '../../../../utils/symbols';
@@ -38,13 +38,12 @@ const ShapesDetailsPage: FC = () => {
     };
 
     loadShape();
-
   }, [id]);
 
   if (isLoading) {
     return (
-      <div className="newCarLoader">
-        <img src={car} alt="loading..." className="car"/>
+      <div className='newCarLoader'>
+        <CircularProgress />
       </div>
     );
   }

@@ -1,9 +1,9 @@
+import { CircularProgress } from '@mui/material';
 import { OntologyContext } from 'context/OntologyContext';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import car from '../../../../assets/car.gif';
 import { fetchOntologyById } from '../../../../services/ontologyService.utils';
 import { fetchAllSchemas } from '../../../../services/schemaApiService';
 import { fetchAllShapesFromSchemas } from '../../../../services/shapeService.utils';
@@ -45,8 +45,8 @@ const OntologiesDetailsPage: FC = () => {
 
   if (isLoading) {
     return (
-      <div className="newCarLoader">
-        <img src={car} alt="loading..." className="car"/>
+      <div className='newCarLoader'>
+        <CircularProgress />
       </div>
     );
   }
