@@ -32,9 +32,9 @@ const ServiceOfferings = () => {
           <LoadingIndicator visible={state === 'LOADING'}/>
           <CardContainer visible={state === 'SHOW_OFFERINGS'}>
             {
-              serviceOfferings.map((serviceOffering) => (
+              serviceOfferings.map((serviceOffering, index) => (
                 <ItemCard
-                  key={serviceOffering.name}
+                  key={index}
                   label={serviceOffering.label}
                   isGaiaXCompliant={true}
                   service={serviceOffering}

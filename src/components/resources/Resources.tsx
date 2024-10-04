@@ -48,16 +48,14 @@ const Resources = () => {
             </Horizontal>
             <LoadingIndicator visible={state === 'LOADING'}/>
             <CardContainer visible={state === 'SHOW_RESOURCES'}>
-              {
-                resources.map((resource) => (
-                  <ItemCard
-                    key={resource.uri + resource.name}
-                    label={resource.labels.join(', ')}
-                    isGaiaXCompliant={true}
-                    resource={resource}
-                  />
-                ))
-              }
+              {resources.map((resource, index) => (
+                <ItemCard
+                  key={index}
+                  label={resource.labels.join(', ')}
+                  isGaiaXCompliant={true}
+                  resource={resource}
+                />
+              ))}
             </CardContainer>
             <NoContent
               message={t('resources.no-resources-available')}
